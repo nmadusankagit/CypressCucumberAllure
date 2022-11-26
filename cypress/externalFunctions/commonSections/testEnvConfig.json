@@ -1,0 +1,42 @@
+{
+    "CMSEnvironment": {
+        "LIVE": {
+            "BaseURL": "",
+            "DefaultEncryptPassword": ""
+        },
+        "UAT": {
+            "BaseURL": "",
+            "DefaultEncryptPassword": ""
+        },
+        "QA": {
+            "BaseURL": "",
+            "DefaultEncryptPassword": ""
+        }
+    },
+    "ClientEnvironment": {
+        "LIVE": {
+            "BaseURL": "",
+            "DefaultEncryptPassword": ""
+        },
+        "UAT": {
+            "BaseURL": "https://prelive-travelinsurance.staysure.co.uk",
+            "DefaultEncryptPassword": "",
+            "BusinessLogin": {
+                "Username": "nipunaintervest@gmail.com",
+                "Password": "January*27"
+            }
+        },
+        "UAT02": {
+            "BaseURL": "https://uat02sts.intertrav.co.uk/travelinsurance",
+            "DefaultEncryptPassword": "",
+            "BusinessLogin": {
+                "Username": "nipunaintervest@gmail.com",
+                "Password": "January*27"
+            }
+        },
+        "QA": {
+            "BaseURL": "https://prelive-travelinsurance.staysure.co.uk",
+            "DefaultEncryptPassword": ""
+        }
+    }
+}

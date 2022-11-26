@@ -1,0 +1,42 @@
+{
+    "ValidationDataSet":{
+        "Email With Outside Spaces": [" madusanka.nipuna@gmail.com ","January*27", ["Valid"]],
+        "Empty Email": ["","January*27", ["Empty-Email"]],
+        "Empty Password": ["madusanka.nipuna@gmail.com","", ["Empty-Password"]],
+        "Empty Email and Password": ["","", ["Empty-Email","Empty-Password"]],
+        "Email With Spaces": ["mudi tha@intervest.lk","January*27", ["Email_Invalid"]],
+        "Email Without Username": ["@intervest.lk","January*27", ["Email_Invalid"]],
+        "Email With Two @ Signs": ["muditha@@intervest.lk","January*27", ["Email_Invalid"]],
+        "Email With Multiple Dots": ["muditha@intervest..lk","January*27", ["Email_Invalid"]],
+        "Email With Plus Sign": ["muditha@+intervest.lk","January*27", ["Email_Invalid"]],
+        "Email With Leading Dot": [".muditha@intervest.lk","January*27", ["Email_Invalid"]],
+        "Email Without Top-level Domain": ["muditha@intervest","January*27", ["Email_Invalid"]],
+        "Unregisted Email Correct Password": ["madusankaaa@gmail.com","January*27", ["Email_Not_Registered"]],
+        "Registed Email Wrong Password": ["madusanka.nipuna@gmail.com","WrongPassword", ["Password_Wrong"]],
+        "Registed Email Wrong Password ( Correct password - No Caps )": ["madusanka.nipuna@gmail.com","january*27", ["Password_Wrong"]],
+        "Empty Password and Invalid Email": ["madusankanipunagmail.com","", ["Email_Invalid","Empty-Password"]],
+        "Empty Email and Empty Password": ["","", ["Empty-Email","Empty-Password"]],
+        "Maximum Email Lenghth Exceed": ["madusankanipunamadusankanipunamadusankanipunamadusankanipunamadusankanipunamadusankanipunamadusankanipunamadusankanipuna@gmail.com","January*27", ["Max_Email_Length"]],
+        "Maximum Password Lenghth Exceed": ["madusanka.nipuna@gmail.com","JanuaryJanuaryJanuaryJanuaryJanuaryJanuaryJanuary*27", ["Max_Password_Length"]]
+
+    },
+
+    "ErrorMessages":{
+        "Email_Invalid":{"ErrorTitle":"EMAIL","ErrorMessage":"Please enter a valid email address.","FieldNotation":["Exclamation"]},
+        "Email_Not_Registered":{"ErrorTitle":"","ErrorMessage":"Your email or password is incorrect.","FieldNotation":[]},
+        "Password_Wrong":{"ErrorTitle":"","ErrorMessage":"Your email or password is incorrect.","FieldNotation":[]},
+        "Empty-Email":{"ErrorTitle":"","ErrorMessage":"Please enter your email address.","FieldNotation":["Exclamation"]},
+        "Empty-Password":{"ErrorTitle":"","ErrorMessage":"Please enter your password.","FieldNotation":["Exclamation"]},
+        "Disable-Account":{"ErrorTitle":"","ErrorMessage":"Something went wrong. Please contact Lymited for more information.","FieldNotation":["Exclamation"]}
+    },
+    
+    "FieldErrorCssUpdates":{
+        "Exclamation": {
+            "CSSAttributeName": "background-image",
+            "CSSAttributeValue": "url(\"https://test01.lymited.com/static/media/exclamation-sm.48e59e0d.svg\")"
+          }
+    }
+
+
+}
+

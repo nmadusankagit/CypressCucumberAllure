@@ -54,7 +54,7 @@ module.exports = defineConfig({
     },
     // setupNodeEvents,
     specPattern: "cypress/e2e/features/*.feature",
-    baseUrl: "https://www.saucedemo.com",
+    // baseUrl: "https://www.saucedemo.com",
     chromeWebSecurity: false,
     projectId: 'd9ir7w',
     screenshotsFolder: './cypress/snapshots/base',
@@ -71,7 +71,8 @@ module.exports = defineConfig({
         "user": "STAYSURE",
         "password": "east_663!",
         "connectString": "soa-uni-training.c9qsur8an7x8.eu-west-1.rds.amazonaws.com:1521/UNITRA"
-      }
+      },
+      testenvironment: 'UAT'
 
     },
   },

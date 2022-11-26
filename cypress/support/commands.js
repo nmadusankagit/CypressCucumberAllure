@@ -1,3 +1,6 @@
+import goToPage from '../externalFunctions/custom/moveToPage';
+import preRequirements from '../externalFunctions/custom/preRequirements';
+import goToIFame from '../externalFunctions/custom/iframe';
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,3 +26,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("goto", (pageName) => { goToPage(pageName) });
+Cypress.Commands.add("PreReq", (requirementname, parameters) => { preRequirements(requirementname, parameters) });
+Cypress.Commands.add("iframe", (iframeName) => { goToIFame(iframeName) });

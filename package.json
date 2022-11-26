@@ -26,5 +26,8 @@
     "mocha-allure-reporter": "^1.4.0",
     "multiple-cucumber-html-reporter": "^3.0.1",
     "oracledb": "^5.5.0"
+  },
+  "dependencies": {
+    "cypress-xpath": "^2.0.1"
   }
 }
