@@ -7,7 +7,13 @@ const loginPage = require("../../pages/LoginPage");
 
 
 Given("A web browser is at the saucelabs login page", () => {
+  const SQL_MED_QUOTE = "select * from med_quote where quote_id = 177";
   cy.visit("/");
+  cy.task("sqlQuery", SQL_MED_QUOTE).then((resolvedValue) => {
+    resolvedValue["rows"].forEach((item) => {
+      console.log("result==>" + item);
+    });
+  });
 });
 
 When("A user enters the username {string}, the password {string}, and clicks on the login button", (username,password) => {
