@@ -48,7 +48,7 @@ export default class userLoginSection {
             case 'departure_guernsey':
                 return this.getSection().xpath('//span[@id="departure-UK4"]');
                 break;
-            case 'departure_Jersey':
+            case 'departure_jersey':
                 return this.getSection().xpath('//span[@id="departure-UK5"]');
                 break;
             // Trip already booked

@@ -54,14 +54,16 @@ module.exports = defineConfig({
     },
     // setupNodeEvents,
     specPattern: "cypress/e2e/features/*.feature",
-    // baseUrl: "https://www.saucedemo.com",
+    // baseUrl: "https://prelive-travelinsurance.staysure.co.uk",
     chromeWebSecurity: false,
     projectId: 'd9ir7w',
     screenshotsFolder: './cypress/snapshots/base',
     trashAssetsBeforeRuns: true,
     defaultCommandTimeout: 30000,
     pageLoadTimeout: 100000,
-    requestTimeout: 30000,
+    requestTimeout: 100000,
+    responseTimeout : 100000,
+    numTestsKeptInMemory: 0,
     video: false,
     videoCompression: 32,
     videoUploadOnPasses: false,
@@ -72,7 +74,7 @@ module.exports = defineConfig({
         "password": "east_663!",
         "connectString": "soa-uni-training.c9qsur8an7x8.eu-west-1.rds.amazonaws.com:1521/UNITRA"
       },
-      testenvironment: 'UAT'
+      testenvironment: 'LIVE'
 
     },
   },

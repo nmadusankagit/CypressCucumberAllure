@@ -15,8 +15,12 @@
     },
     "ClientEnvironment": {
         "LIVE": {
-            "BaseURL": "",
-            "DefaultEncryptPassword": ""
+            "BaseURL": "https://travelinsurance.staysure.co.uk",
+            "DefaultEncryptPassword": "",
+            "BusinessLogin": {
+                "Username": "nipunaintervest@gmail.com",
+                "Password": "January*27"
+            }
         },
         "UAT": {
             "BaseURL": "https://prelive-travelinsurance.staysure.co.uk",
