@@ -5,15 +5,51 @@ import {
   Given,
   When,
   Then,
+  And,
+  But
 } from "@badeball/cypress-cucumber-preprocessor";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 })
 
+
+
 const loginPage = require("../../pages/LoginPage");
 let aboutYourTravelPolicySectionElements = new loginPageSection(getloginPageSection('about_your_travel_policy_section'));
+let yourBasicDetailsSection = new loginPageSection(getloginPageSection('your_basic_details_section'));
+let submitButtonSection = new loginPageSection(getloginPageSection('submit_button_section'));
 const RunEnvironment = Cypress.env('testenvironment');
+let YearValue;
+let MonthValue;
+let DateValue;
+
+const splitDateInput = (DateParameter) => {
+  //Date format DD/MM/YYYY Ex: 20/04/2023
+  if (String(DateParameter).includes('/')) {
+    let DateParameterArray = DateParameter.split('/');
+    DateValue = DateParameterArray[0].replace(/^0+/, '');
+    MonthValue = (DateParameterArray[1].replace(/^0+/, '')) - 1;
+    YearValue = DateParameterArray[2];
+  } else {
+    console.log("Date format is incorrect, Date format DD/MM/YYYY Ex: 20/04/2023")
+  }
+}
+
+const monthValueMaping = {
+  0: "Jan",
+  1: "Feb",
+  2: "Mar",
+  3: "Apr",
+  4: "May",
+  5: "Jun",
+  6: "Jul",
+  7: "Aug",
+  8: "Sep",
+  9: "Oct",
+  10: "Nov",
+  11: "Dec"
+}
 
 
 
@@ -25,16 +61,16 @@ Given("A web browser is at the StaySure quote creaton page", () => {
 });
 
 When("A user selectes trip type {string} in Travel Details tab", (tripType) => {
-  aboutYourTravelPolicySectionElements.buttons('singletrip').click({ force: true }).wait(10);
+  aboutYourTravelPolicySectionElements.buttons('singletrip').click({ force: true });
 });
 
 When("A user select {string} for cruise option in Travel Details tab", (cruise) => {
   switch (cruise.toLowerCase()) {
     case 'yes':
-      aboutYourTravelPolicySectionElements.buttons('cruiseyes').click({ force: true }).wait(10)
+      aboutYourTravelPolicySectionElements.buttons('cruiseyes').click({ force: true })
       break;
     case 'no':
-      aboutYourTravelPolicySectionElements.buttons('cruiseno').click({ force: true }).wait(10)
+      aboutYourTravelPolicySectionElements.buttons('cruiseno').click({ force: true })
       break;
     default:
       return null;
@@ -45,16 +81,16 @@ When("A user select {string} for cruise option in Travel Details tab", (cruise) 
 When("A user selectes Travelling from {string} in Travel Details tab", (travellingFrom) => {
   switch (travellingFrom.toLowerCase()) {
     case 'united kingdom':
-      aboutYourTravelPolicySectionElements.buttons('departure_uk').click({ force: true }).wait(10);
+      aboutYourTravelPolicySectionElements.buttons('departure_uk').click({ force: true });
       break;
     case 'isle of man':
-      aboutYourTravelPolicySectionElements.buttons('departure_isleofman').click({ force: true }).wait(10);
+      aboutYourTravelPolicySectionElements.buttons('departure_isleofman').click({ force: true });
       break;
     case 'guernsey':
-      aboutYourTravelPolicySectionElements.buttons('departure_guernsey').click({ force: true }).wait(10);
+      aboutYourTravelPolicySectionElements.buttons('departure_guernsey').click({ force: true });
       break;
     case 'jersey':
-      aboutYourTravelPolicySectionElements.buttons('departure_jersey').click({ force: true }).wait(10);
+      aboutYourTravelPolicySectionElements.buttons('departure_jersey').click({ force: true });
       break;
     default:
       return null;
@@ -88,16 +124,62 @@ When("A user selectes all Travelling from locations in Travel Details tab", (tab
   });
 });
 
-When("A user selectes Travelling to {string} in Travel Details tab", (travellingTo) => {
+When("A user type Travelling to {string} in Travel Details tab", (travellingTo) => {
   aboutYourTravelPolicySectionElements.inputFields('destination_country_search').type(travellingTo, { force: true }).wait(50);
-  aboutYourTravelPolicySectionElements.inputFields('destination_country_search_result').click({ force: true }).wait(1000);
+  aboutYourTravelPolicySectionElements.inputFields('destination_country_search_result').click({ force: true });
 });
 
 When("A user selectes Departure date {string} in Travel Details tab", (departureDate) => {
-  aboutYourTravelPolicySectionElements.datepicker('year_dropdown').select('2023').wait(1000);
-    aboutYourTravelPolicySectionElements.datepicker('day_dropdown-4').click({ force: true }).wait(1000);
+  splitDateInput(departureDate);
+  aboutYourTravelPolicySectionElements.datepicker('year_dropdown_departure').select(YearValue).then(() => {
+    aboutYourTravelPolicySectionElements.datepicker('month_dropdown_departure').select(monthValueMaping[MonthValue]).then(() => {
+      aboutYourTravelPolicySectionElements.datepicker(`day_dropdown_departure-${DateValue}`).click({ force: true });
+    });
+  });
 });
 
+When("A user selectes Return date {string} in Travel Details tab", (returnDate) => {
+  splitDateInput(returnDate);
+  aboutYourTravelPolicySectionElements.datepicker('year_dropdown_return').select(YearValue).then(() => {
+    aboutYourTravelPolicySectionElements.datepicker('month_dropdown_return').select(monthValueMaping[MonthValue]).then(() => {
+      aboutYourTravelPolicySectionElements.datepicker(`day_dropdown_return-${DateValue}`).click({ force: true });
+    });
+  });
+});
+
+When("A user selectes Cover type {string} in Travel Details tab", (coverTypes) => {
+  aboutYourTravelPolicySectionElements.buttons(coverTypes).click({ force: true });
+});
+
+When("A user type age {string} for traveller {string} in Travel Details tab", (travellerAge, travellerIndex) => {
+  aboutYourTravelPolicySectionElements.inputFields(`traveller_age-${travellerIndex}`).type(travellerAge, { force: true });
+});
+
+When("A user selectes title {string} in Travel Details tab", (organiizerTitle) => {
+  // Options: Mr/ Mrs/ Miss/ Ms/ Dr/ Rev
+  yourBasicDetailsSection.dropDowns('organiser_title').select(organiizerTitle);
+});
+
+When("A user type first name {string} and last name {string} in Travel Details tab", (organiserFirstName, organiserLastName) => {
+  yourBasicDetailsSection.inputFields(`organiser_first_name`).type(organiserFirstName, { force: true });
+  yourBasicDetailsSection.inputFields(`organiser_last_name`).type(organiserLastName, { force: true });
+});
+
+When("A user type email address {string} in Travel Details tab", (emailAddress) => {
+  yourBasicDetailsSection.inputFields(`organiser_email`).type(emailAddress, { force: true });
+});
+
+When("A user type telephone number {string} in Travel Details tab", (telephoneNumber) => {
+  yourBasicDetailsSection.inputFields(`organiser_time_telephone`).type(telephoneNumber, { force: true });
+});
+
+When("A user type post code {string} in Travel Details tab", (postCode) => {
+  yourBasicDetailsSection.inputFields(`organiser_post_code`).type(postCode, { force: true });
+});
+
+When("A user next button in Travel Details tab", () => {
+  submitButtonSection.buttons(`next_button`).click({ force: true });
+});
 
 
 
