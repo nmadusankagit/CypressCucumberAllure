@@ -19,16 +19,24 @@ Feature: Login page
         # Any travelling to country
         And A user type Travelling to "Singapore" in Travel Details tab
         # Date format DD/MM/YYYY Ex: 20/04/2023
-        When A user selectes Departure date "20/04/2023" in Travel Details tab
-        When A user selectes Return date "25/04/2023" in Travel Details tab
-        When A user selectes Cover type "cover_type_individual" in Travel Details tab
-        When A user type age "25" for traveller "1" in Travel Details tab
-        When A user selectes title "Mr" in Travel Details tab
-        When A user type first name "Nipuna" and last name "Madusanka" in Travel Details tab
-        When A user type email address "staysuremember@gmail.com" in Travel Details tab
-        When A user type telephone number "0123456789" in Travel Details tab
-        When A user type post code "NN47YB" in Travel Details tab
+        And A user selectes Departure date "20/04/2023" in Travel Details tab
+        And A user selectes Return date "25/04/2023" in Travel Details tab
+        And A user selectes Cover type "cover_type_individual" in Travel Details tab
+        And A user type age "25" for traveller "1" in Travel Details tab
+        And A user selectes title "Mr" in Travel Details tab
+        And A user type first name "Nipuna" and last name "Madusanka" in Travel Details tab
+        And A user type email address "staysuremember@gmail.com" in Travel Details tab
+        And A user type telephone number "0123456789" in Travel Details tab
+        And A user type post code "NN47YB" in Travel Details tab
         When A user next button in Travel Details tab
+        When A user is in Your Details tab
+        When A user select I understand checkbox for Medical Disclaimer in Your Details tab
+        # Options: Mr/ Mrs/ Miss/ Ms/ Dr/ Rev
+        When A user selectes traveller "1" title "Mr", first name "Nipuna" and last name "Madusanka" in Your Details tab
+        When A user add medical conditions for traveller "1" in Your Details tab
+        When A user is in medical screening page
+        When A user search medical condition "Testing" in medical screening page
+
         Then empty assertion
 
 
