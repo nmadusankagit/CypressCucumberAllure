@@ -35,8 +35,16 @@ Feature: Login page
         When A user selectes traveller "1" title "Mr", first name "Nipuna" and last name "Madusanka" in Your Details tab
         When A user add medical conditions for traveller "1" in Your Details tab
         When A user is in medical screening page
-        When A user search medical condition "Testing" in medical screening page
-
+        When A user search medical condition "Burns" in medical screening page
+            | Medical_Question                                              | Answer |
+            | Are any further dressings required for your burns?            | Yes    |
+            | Is any surgery required in the future to treat the burns?     | Yes    |
+            | Have the burns caused other problems such as skin infections? | No     |
+        When A user click next on Your Details tab
+        When A user is in quote results page
+        # Option: single trip basic, single trip comprehensive, annual multi trip basic, annual multi trip comprehensive
+        When A user select cover type "single trip comprehensive" in quote results tab
+        When A user select ACO "excess waiver" in quote results tab
         Then empty assertion
 
 

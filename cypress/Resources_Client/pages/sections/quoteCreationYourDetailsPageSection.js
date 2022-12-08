@@ -63,6 +63,9 @@ export default class userLoginSection {
             case 'next':
                 return this.getSection().xpath(`//input[@value="Next" and @type="button"]`);
                 break;
+            case 'submit_medical_declaration':
+                return this.getSection().xpath(`//div[@id="medical_dec"]//button[@id="medical_dec_submit_btn"]`);
+                break;
             ////////////////////////////////////////////////////////////////////////////////////////////////
             default:
                 return null;

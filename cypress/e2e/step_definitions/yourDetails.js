@@ -54,3 +54,9 @@ When("A user selectes traveller {string} title {string}, first name {string} and
 When("A user add medical conditions for traveller {string} in Your Details tab", (travellerIndex) => {
   medicalDeclarationSection.buttons(`medical_conditions_yes-${travellerIndex}`).click({ force: true });
 });
+
+When("A user click next on Your Details tab", () => {
+  medicalDeclarationSection.buttons(`next`).click({ force: true });
+  medicalDeclarationSection.buttons(`submit_medical_declaration`).click({ force: true });
+
+});
