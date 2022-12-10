@@ -59,14 +59,14 @@ module.exports = defineConfig({
     projectId: 'd9ir7w',
     screenshotsFolder: './cypress/snapshots/base',
     trashAssetsBeforeRuns: true,
-    defaultCommandTimeout: 30000,
+    defaultCommandTimeout: 50000,
     pageLoadTimeout: 100000,
     requestTimeout: 100000,
     responseTimeout : 100000,
     numTestsKeptInMemory: 0,
-    video: false,
-    videoCompression: 32,
-    videoUploadOnPasses: false,
+    video: true,
+    videoCompression: 10,
+    videoUploadOnPasses: true,
     env: {
       allureReuseAfterSpec: true,
       "db": {

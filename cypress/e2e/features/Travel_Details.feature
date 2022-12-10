@@ -45,6 +45,16 @@ Feature: Login page
         # Option: single trip basic, single trip comprehensive, annual multi trip basic, annual multi trip comprehensive
         When A user select cover type "single trip comprehensive" in quote results tab
         When A user select ACO "excess waiver" in quote results tab
+        When A user click next on quote results tab
+        When A user is in quote review page
+        When A user enter organiser details in quote review page
+            | Title    | First_Name | Surname   | Date_of_Birth | Tel_Number  | Email                    | Post_My_Documents | Post_Code | Address_List_Selection                                  | Address_Line_1   | Address_Line_2 | Town_City   | Country        |
+            | Mr       | Nipuna     | Madusanka | 15/01/1988    | 0777882422  | staysuremember@gmail.com | Yes               | NN47YB    | Staysure Services Britannia House Rushmills Northampton | Britannia House  | Rushmills      | Northampton | United Kingdom |
+        When A user is in payment page
+        When A user enter payment details in payment page
+            | Card_Holder_Name | Card_Number      | Expiry_Date | Card_Security_Code |
+            | Testing          | 4111111111111111 | 04/25       | 411                |
+        When A user click pay now button in payment page
         Then empty assertion
 
 

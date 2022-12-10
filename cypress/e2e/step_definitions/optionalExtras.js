@@ -52,3 +52,7 @@ When("A user select ACO {string} in quote results tab", (aco) => {
       return null;
   }
 });
+
+When("A user click next on quote results tab", () => {
+  optionalExtrasPopup.buttons('continue').click({ force: true });
+});

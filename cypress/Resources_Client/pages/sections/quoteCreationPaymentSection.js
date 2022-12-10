@@ -25,6 +25,15 @@ export default class userLoginSection {
     inputFields(inputField) {
         splitPathParameters(inputField);
         switch (selector.toLowerCase()) {
+            case 'card_holder_name':
+                return this.getSection().xpath(`//*[@id="cardholderName"]`);
+                break;
+            case 'card_number':
+                return this.getSection().xpath(`//*[@id="cardNumber"]`);
+                break;
+            case 'card_security_code':
+                return this.getSection().xpath(`//*[@id="csc"]`);
+                break;
             default:
                 return null;
         }
@@ -33,20 +42,11 @@ export default class userLoginSection {
     buttons(buttonName) {
         splitPathParameters(buttonName);
         switch (selector.toLowerCase()) {
-            case 'single_trip_basic':
-                return this.getSection().xpath(`//*[@id="SINGLE_TRIP_BASIC_BTN"]`);
+            case 'btn_cancel':
+                return this.getSection().xpath(`//input[@id="btnCancel"]`);
                 break;
-            case 'single_trip_comprehensive':
-                return this.getSection().xpath(`//*[@id="SINGLE_TRIP_COMPREHENSIVE_BTN"]`);
-                break;
-            case 'annual_multi_trip_basic':
-                return this.getSection().xpath(`//*[@id="ANNUAL_MULTI_TRIP_BASIC_BTN"]`);
-                break;
-            case 'annual_multi_trip_comprehensive':
-                return this.getSection().xpath(`//*[@id="ANNUAL_MULTI_TRIP_COMPREHENSIVE_BTN"]`);
-                break;
-            case 'continue':
-                return this.getSection().xpath(`//*[@id="OEContinueBtn"]`);
+            case 'btn_submit':
+                return this.getSection().xpath(`//input[@id="btnSubmit"]`);
                 break;
             default:
                 return null;
@@ -72,9 +72,6 @@ export default class userLoginSection {
 
     checkBoxes(checkBoxName) {
         switch (checkBoxName.toLowerCase()) {
-            case 'excess_waiver':
-                return this.getSection().xpath(`//div[@id="OEWEB_EXCESS_WAIVER"]//label`);
-                break;
             default:
                 return null;
         }
@@ -92,6 +89,12 @@ export default class userLoginSection {
     dropDowns(dropDownName) {
         splitPathParameters(dropDownName);
         switch (selector.toLowerCase()) {
+            case 'expiry_month':
+                return this.getSection().xpath(`//select[@id="expiryMonth"]`);
+                break;
+            case 'expiry_year':
+                return this.getSection().xpath(`//select[@id="expiryYear"]`);
+                break;
             default:
                 return null;
         }
