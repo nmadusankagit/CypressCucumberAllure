@@ -59,6 +59,8 @@ module.exports = defineConfig({
     projectId: 'd9ir7w',
     screenshotsFolder: './cypress/snapshots/base',
     trashAssetsBeforeRuns: true,
+    experimentalSessionAndOrigin: true,
+    experimentalModifyObstructiveThirdPartyCode: true,
     defaultCommandTimeout: 50000,
     pageLoadTimeout: 100000,
     requestTimeout: 100000,

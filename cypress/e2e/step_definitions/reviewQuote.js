@@ -88,8 +88,5 @@ When("A user enter organiser details in quote review page", (table) => {
         })
       })
     })
-    
-    
-    
   });
 });

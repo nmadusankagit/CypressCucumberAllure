@@ -46,17 +46,18 @@ When("A user enter payment details in payment page", (table) => {
     cy.log(row.Card_Number);
     cy.log(row.Expiry_Date);
     cy.log(row.Card_Security_Code);
-    cardEntryPanel.inputFields(`card_holder_name`).type(row.Card_Holder_Name, { force: true });
-    cardEntryPanel.inputFields(`card_number`).type(row.Card_Number, { force: true });
+    cardEntryPanel.inputFields(`card_holder_name`).type(row.Card_Holder_Name, { delay: 50, force: true }).wait(1000);
+    cardEntryPanel.inputFields(`card_number`).type(row.Card_Number, { delay: 50, force: true }).wait(1000);
     splitDateInput(row.Expiry_Date);
     cardEntryPanel.dropDowns('expiry_month').select(MonthValue).then(() => {
       cardEntryPanel.dropDowns('expiry_year').select(YearValue)
     });
-    cardEntryPanel.inputFields(`card_security_code`).type(row.Card_Security_Code, { force: true });
+    cardEntryPanel.inputFields(`card_security_code`).type(row.Card_Security_Code, { delay: 50, force: true }).wait(1000);
   });
 });
 
 When("A user click pay now button in payment page", () => {
+  cy.wait(500);
   cardEntryPanel.buttons(`btn_submit`).click({ force: true })
-  cy.wait(10000);
+  cy.wait(500);
 });
