@@ -20,3 +20,34 @@ require('cypress-xpath')
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+  });
+  
+  let isSoftAssertion = false;
+  let errors = [];
+  
+  chai.softExpect = function(...args) {
+    isSoftAssertion = true;
+    return chai.expect(...args);
+  };
+  chai.softAssert = function(...args) {
+    isSoftAssertion = true;
+    return chai.assert(...args);
+  };
+  
+  const origAssert = chai.Assertion.prototype.assert;
+  chai.Assertion.prototype.assert = function(...args) {
+    if (isSoftAssertion) {
+      try {
+        origAssert.call(this, ...args);
+      } catch (error) {
+        cy.screenshot(error.message);
+        errors.push(error);
+      }
+      isSoftAssertion = false;
+    } else {
+      origAssert.call(this, ...args);
+    }
+  };

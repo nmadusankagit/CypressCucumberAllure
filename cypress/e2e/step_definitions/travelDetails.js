@@ -20,6 +20,7 @@ let aboutYourTravelPolicySectionElements = new loginPageSection(getloginPageSect
 let yourBasicDetailsSection = new loginPageSection(getloginPageSection('your_basic_details_section'));
 let submitButtonSection = new loginPageSection(getloginPageSection('submit_button_section'));
 const RunEnvironment = Cypress.env('testenvironment');
+const { softExpect } = chai;
 let YearValue;
 let MonthValue;
 let DateValue;
@@ -61,6 +62,7 @@ Given("A web browser is at the StaySure quote creaton page", () => {
 });
 
 When("A user selectes trip type {string} in Travel Details tab", (tripType) => {
+  softExpect("Hi").to.eq("Hello");
   aboutYourTravelPolicySectionElements.buttons('singletrip').click({ force: true });
 });
 
